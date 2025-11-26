@@ -1,0 +1,22 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: vllm-metrics
+  namespace: monitoring
+  labels:
+    release: prometheus
+    app: vllm
+spec:
+  selector:
+    matchLabels:
+      app: vllm-llama
+  namespaceSelector:
+    matchNames:
+    - vllm
+  endpoints:
+  - port: http
+    path: /metrics
+    interval: 15s
+    scrapeTimeout: 10s
+    scheme: http
+    # REMOVED the metricRelabelings that was filtering everything out

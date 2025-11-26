@@ -1,0 +1,69 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: vllm
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: vllm-sa
+  namespace: vllm
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::533267109039:role/vllm-s3-access-role
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vllm-llama
+  namespace: vllm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vllm-llama
+  template:
+    metadata:
+      labels:
+        app: vllm-llama
+    spec:
+      serviceAccountName: vllm-sa
+      containers:
+      - name: vllm
+        image: 533267109039.dkr.ecr.us-east-1.amazonaws.com/llama-vllm:latest
+        ports:
+        - containerPort: 8000
+          name: http
+        env:
+        - name: MODEL_PATH
+          value: "/models/llama-2-7b-merged-vllm"
+        - name: S3_BUCKET
+          value: "llama-qlora-1763527961"
+        - name: S3_PREFIX
+          value: "llama-2-7b-merged-vllm"
+        - name: MAX_MODEL_LEN
+          value: "2048"
+        - name: TENSOR_PARALLEL_SIZE
+          value: "1"
+        resources:
+          requests:
+            nvidia.com/gpu: 1
+            memory: "12Gi"
+            cpu: "3"
+          limits:
+            nvidia.com/gpu: 1
+            memory: "14Gi"
+            cpu: "3"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: vllm-service
+  namespace: vllm
+spec:
+  selector:
+    app: vllm-llama
+  ports:
+  - protocol: TCP
+    port: 8000
+    targetPort: 8000
+  type: LoadBalancer

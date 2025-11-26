@@ -1,0 +1,20 @@
+version: 0.2
+phases:
+  pre_build:
+    commands:
+      - echo Logging in to Docker Hub...
+      - export DOCKERHUB_CREDS=$(aws secretsmanager get-secret-value --secret-id dockerhub-credentials --query SecretString --output text)
+      - export DOCKERHUB_USER=$(echo $DOCKERHUB_CREDS | jq -r '.username')
+      - export DOCKERHUB_PASS=$(echo $DOCKERHUB_CREDS | jq -r '.password')
+      - echo $DOCKERHUB_PASS | docker login --username $DOCKERHUB_USER --password-stdin
+      - echo Logging in to Amazon ECR...
+      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
+  build:
+    commands:
+      - echo Build started on `date`
+      - docker build -t llama-vllm:latest .
+      - docker tag llama-vllm:latest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/llama-vllm:latest
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/llama-vllm:latest

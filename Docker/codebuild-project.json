@@ -1,0 +1,27 @@
+{
+  "name": "llama-vllm-build",
+  "source": {
+    "type": "S3",
+    "location": "docker-build-temp-1763574912/"
+  },
+  "artifacts": {
+    "type": "NO_ARTIFACTS"
+  },
+  "environment": {
+    "type": "LINUX_CONTAINER",
+    "image": "aws/codebuild/standard:7.0",
+    "computeType": "BUILD_GENERAL1_LARGE",
+    "privilegedMode": true,
+    "environmentVariables": [
+      {
+        "name": "AWS_DEFAULT_REGION",
+        "value": "us-east-1"
+      },
+      {
+        "name": "AWS_ACCOUNT_ID",
+        "value": "533267109039"
+      }
+    ]
+  },
+  "serviceRole": "arn:aws:iam::533267109039:role/CodeBuildServiceRole"
+}
