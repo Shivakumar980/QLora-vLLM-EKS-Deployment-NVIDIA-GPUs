@@ -1,0 +1,80 @@
+NAMESPACE     NAME                                                         READY   STATUS             RESTARTS          AGE
+kube-system   pod/aws-node-lkmpk                                           2/2     Running            0                 3d21h
+kube-system   pod/aws-node-vv6r5                                           2/2     Running            0                 2d17h
+kube-system   pod/coredns-6b9575c64c-hzsst                                 1/1     Running            0                 3d21h
+kube-system   pod/coredns-6b9575c64c-pkmhr                                 1/1     Running            0                 3d21h
+kube-system   pod/ebs-csi-controller-5455b886df-6dbj8                      6/6     Running            0                 2d20h
+kube-system   pod/ebs-csi-controller-5455b886df-zj8gh                      6/6     Running            0                 2d20h
+kube-system   pod/ebs-csi-node-jxqvr                                       3/3     Running            0                 2d17h
+kube-system   pod/ebs-csi-node-s7w5j                                       3/3     Running            0                 2d20h
+kube-system   pod/kube-proxy-jn86q                                         1/1     Running            0                 3d21h
+kube-system   pod/kube-proxy-zlpbv                                         1/1     Running            0                 2d17h
+kube-system   pod/metrics-server-55979bcbb8-6vn8n                          1/1     Running            0                 3d21h
+kube-system   pod/metrics-server-55979bcbb8-qx8qh                          1/1     Running            0                 3d21h
+kube-system   pod/nvidia-device-plugin-daemonset-7ntsl                     1/1     Running            0                 3d21h
+kube-system   pod/nvidia-device-plugin-daemonset-nsxkw                     0/1     CrashLoopBackOff   773 (3m38s ago)   2d17h
+monitoring    pod/alertmanager-prometheus-kube-prometheus-alertmanager-0   2/2     Running            0                 2d17h
+monitoring    pod/prometheus-grafana-5476d899b7-jlqrk                      3/3     Running            0                 2d17h
+monitoring    pod/prometheus-kube-prometheus-operator-75db66c746-dthvf     1/1     Running            0                 2d17h
+monitoring    pod/prometheus-kube-state-metrics-f7d8f5f9b-vxvz8            1/1     Running            0                 2d17h
+monitoring    pod/prometheus-prometheus-kube-prometheus-prometheus-0       2/2     Running            0                 2d17h
+monitoring    pod/prometheus-prometheus-node-exporter-2rjzv                1/1     Running            0                 2d17h
+monitoring    pod/prometheus-prometheus-node-exporter-rzrkq                1/1     Running            0                 2d17h
+vllm          pod/vllm-llama-d46dcb7cd-lx5sz                               1/1     Running            0                 15h
+
+NAMESPACE     NAME                                                         TYPE           CLUSTER-IP       EXTERNAL-IP                                                               PORT(S)                        AGE
+default       service/kubernetes                                           ClusterIP      10.100.0.1       <none>                                                                    443/TCP                        3d23h
+kube-system   service/eks-extension-metrics-api                            ClusterIP      10.100.204.227   <none>                                                                    443/TCP                        3d23h
+kube-system   service/kube-dns                                             ClusterIP      10.100.0.10      <none>                                                                    53/UDP,53/TCP,9153/TCP         3d23h
+kube-system   service/metrics-server                                       ClusterIP      10.100.52.76     <none>                                                                    443/TCP                        3d23h
+kube-system   service/prometheus-kube-prometheus-coredns                   ClusterIP      None             <none>                                                                    9153/TCP                       2d17h
+kube-system   service/prometheus-kube-prometheus-kube-controller-manager   ClusterIP      None             <none>                                                                    10257/TCP                      2d17h
+kube-system   service/prometheus-kube-prometheus-kube-etcd                 ClusterIP      None             <none>                                                                    2381/TCP                       2d17h
+kube-system   service/prometheus-kube-prometheus-kube-proxy                ClusterIP      None             <none>                                                                    10249/TCP                      2d17h
+kube-system   service/prometheus-kube-prometheus-kube-scheduler            ClusterIP      None             <none>                                                                    10259/TCP                      2d17h
+kube-system   service/prometheus-kube-prometheus-kubelet                   ClusterIP      None             <none>                                                                    10250/TCP,10255/TCP,4194/TCP   2d20h
+monitoring    service/alertmanager-operated                                ClusterIP      None             <none>                                                                    9093/TCP,9094/TCP,9094/UDP     2d17h
+monitoring    service/prometheus-grafana                                   ClusterIP      10.100.210.76    <none>                                                                    80/TCP                         2d17h
+monitoring    service/prometheus-kube-prometheus-alertmanager              ClusterIP      10.100.231.205   <none>                                                                    9093/TCP,8080/TCP              2d17h
+monitoring    service/prometheus-kube-prometheus-operator                  ClusterIP      10.100.138.90    <none>                                                                    443/TCP                        2d17h
+monitoring    service/prometheus-kube-prometheus-prometheus                ClusterIP      10.100.94.169    <none>                                                                    9090/TCP,8080/TCP              2d17h
+monitoring    service/prometheus-kube-state-metrics                        ClusterIP      10.100.51.18     <none>                                                                    8080/TCP                       2d17h
+monitoring    service/prometheus-operated                                  ClusterIP      None             <none>                                                                    9090/TCP                       2d17h
+monitoring    service/prometheus-prometheus-node-exporter                  ClusterIP      10.100.108.212   <none>                                                                    9100/TCP                       2d17h
+vllm          service/vllm-service                                         LoadBalancer   10.100.90.247    afd773128eaee4367b07d28a1d7fa194-1360421433.us-east-1.elb.amazonaws.com   8000:31685/TCP                 3d22h
+
+NAMESPACE     NAME                                                 DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR              AGE
+kube-system   daemonset.apps/aws-node                              2         2         2       2            2           <none>                     3d23h
+kube-system   daemonset.apps/ebs-csi-node                          2         2         2       2            2           kubernetes.io/os=linux     2d20h
+kube-system   daemonset.apps/ebs-csi-node-windows                  0         0         0       0            0           kubernetes.io/os=windows   2d20h
+kube-system   daemonset.apps/kube-proxy                            2         2         2       2            2           <none>                     3d23h
+kube-system   daemonset.apps/nvidia-device-plugin-daemonset        2         2         1       2            1           <none>                     3d23h
+monitoring    daemonset.apps/prometheus-prometheus-node-exporter   2         2         2       2            2           kubernetes.io/os=linux     2d17h
+
+NAMESPACE     NAME                                                  READY   UP-TO-DATE   AVAILABLE   AGE
+kube-system   deployment.apps/coredns                               2/2     2            2           3d23h
+kube-system   deployment.apps/ebs-csi-controller                    2/2     2            2           2d20h
+kube-system   deployment.apps/metrics-server                        2/2     2            2           3d23h
+monitoring    deployment.apps/prometheus-grafana                    1/1     1            1           2d17h
+monitoring    deployment.apps/prometheus-kube-prometheus-operator   1/1     1            1           2d17h
+monitoring    deployment.apps/prometheus-kube-state-metrics         1/1     1            1           2d17h
+vllm          deployment.apps/vllm-llama                            1/1     1            1           3d22h
+
+NAMESPACE     NAME                                                             DESIRED   CURRENT   READY   AGE
+kube-system   replicaset.apps/coredns-6b9575c64c                               2         2         2       3d23h
+kube-system   replicaset.apps/ebs-csi-controller-5455b886df                    2         2         2       2d20h
+kube-system   replicaset.apps/metrics-server-55979bcbb8                        2         2         2       3d23h
+monitoring    replicaset.apps/prometheus-grafana-5476d899b7                    1         1         1       2d17h
+monitoring    replicaset.apps/prometheus-grafana-6879fcc777                    0         0         0       2d17h
+monitoring    replicaset.apps/prometheus-grafana-86576c59c9                    0         0         0       2d17h
+monitoring    replicaset.apps/prometheus-kube-prometheus-operator-75db66c746   1         1         1       2d17h
+monitoring    replicaset.apps/prometheus-kube-state-metrics-f7d8f5f9b          1         1         1       2d17h
+vllm          replicaset.apps/vllm-llama-57bcddc774                            0         0         0       3d22h
+vllm          replicaset.apps/vllm-llama-6654c498dc                            0         0         0       2d16h
+vllm          replicaset.apps/vllm-llama-767fc997d                             0         0         0       3d17h
+vllm          replicaset.apps/vllm-llama-845b5c9b46                            0         0         0       16h
+vllm          replicaset.apps/vllm-llama-d46dcb7cd                             1         1         1       15h
+
+NAMESPACE    NAME                                                                    READY   AGE
+monitoring   statefulset.apps/alertmanager-prometheus-kube-prometheus-alertmanager   1/1     2d17h
+monitoring   statefulset.apps/prometheus-prometheus-kube-prometheus-prometheus       1/1     2d17h

@@ -1,0 +1,30 @@
+=== Current Resources ===
+Wed Nov 26 16:35:59 EST 2025
+{
+    "clusters": [
+        "llama-vllm-cluster"
+    ]
+}
+2025-11-19 12:55:23 docker-build-temp-1763574912
+2025-11-18 23:52:43 llama-qlora-1763527961
+2024-04-18 23:08:52 resumebluegreen
+2024-05-09 18:00:03 shivakumarmachidi.com
+2024-05-09 18:18:50 www.shivakumarmachidi.com
+{
+    "repositories": [
+        {
+            "repositoryArn": "arn:aws:ecr:us-east-1:533267109039:repository/llama-vllm",
+            "registryId": "533267109039",
+            "repositoryName": "llama-vllm",
+            "repositoryUri": "533267109039.dkr.ecr.us-east-1.amazonaws.com/llama-vllm",
+            "createdAt": "2025-11-19T00:30:07.987000-05:00",
+            "imageTagMutability": "MUTABLE",
+            "imageScanningConfiguration": {
+                "scanOnPush": true
+            },
+            "encryptionConfiguration": {
+                "encryptionType": "AES256"
+            }
+        }
+    ]
+}
