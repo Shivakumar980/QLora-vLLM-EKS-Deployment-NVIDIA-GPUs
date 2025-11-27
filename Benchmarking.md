@@ -10,7 +10,7 @@ The following Grafana dashboards visualize real-time performance metrics from th
 
 ## 1. Request Rate and Throughput Metrics
 
-<img width="468" height="264" alt="Image" src="https://github.com/user-attachments/assets/de75c870-99c8-468a-b2b7-ad1db2a37b96" />
+<img width="1000" height="1000" alt="Image" src="https://github.com/user-attachments/assets/de75c870-99c8-468a-b2b7-ad1db2a37b96" />
 
 ### Overview
 This dashboard panel displays the **request rate** metrics for the vLLM inference server, showing how many requests are being processed over time.
@@ -24,7 +24,7 @@ This dashboard panel displays the **request rate** metrics for the vLLM inferenc
 
 ## 2. GPU Utilization and Memory Metrics
 
-<img width="468" height="265" alt="Image" src="https://github.com/user-attachments/assets/3470e283-96f5-4892-9cbe-a31f96ae0421" />
+<img width="1000" height="1000" alt="Image" src="https://github.com/user-attachments/assets/3470e283-96f5-4892-9cbe-a31f96ae0421" />
 
 ### Overview
 This panel tracks **GPU resource utilization**, including compute usage and memory consumption, which are critical for LLM inference workloads.
@@ -38,7 +38,7 @@ This panel tracks **GPU resource utilization**, including compute usage and memo
 
 ## 3. Response Time and Latency Distribution
 
-<img width="468" height="257" alt="Image" src="https://github.com/user-attachments/assets/d3399d67-2971-428f-9278-0cc36a7e7859" />
+<img width="1000" height="1000" alt="Image" src="https://github.com/user-attachments/assets/d3399d67-2971-428f-9278-0cc36a7e7859" />
 
 ### Overview
 This dashboard visualizes **inference latency metrics**, showing how quickly the vLLM server responds to requests.
